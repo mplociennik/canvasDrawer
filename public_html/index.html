@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Canvas Drawer</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="js/jquery-1.12.3.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+        <script src="js/app.js"></script>
+        <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+        <link rel="stylesheet" href="bootstrap/css/bootstrap-theme.min.css">
+        <script src="bootstrap/js/bootstrap.min.js"></script>
+    </head>
+    <body ng-app="canvasDrawer">
+        <div class="container-fluid" ng-controller="drawerCtrl">
+            <canvas id="canvasDrawer" width="640" height="420"></canvas>
+            <form>
+                <input class="form-control" type="text" ng-model="mapPoints" >
+                <button class="btn btn-default" ng-click="clear">Clear</button>
+            </form>
+        </div>
+    </body>
+</html>
