@@ -4,12 +4,7 @@ app.controller("drawerCtrl", function ($scope) {
     $scope.mapElement = " ";
     $scope.canvas = document.getElementById('canvasDrawer');
     $scope.context = $scope.canvas.getContext('2d');
-    $scope.background = new Image();
-    $scope.background.src = "pietro1.jpg";
-
-    $scope.background.onload = function () {
-        $scope.context.drawImage($scope.background, 0, 0);
-    };
+    $scope.background = null;
 
     $scope.canvas.addEventListener("click", function(evt){
         var mousePos = $scope.getMousePos($scope.canvas, evt);
@@ -20,10 +15,13 @@ app.controller("drawerCtrl", function ($scope) {
 
     $scope.setMapPoint = function(mapPoint){
         $scope.mapPoints = mapPoint;
+        $('#mapPoints').text($scope.mapPoints);
     };
     
     $scope.clear = function () {
         $scope.mapElement = " ";
+        $scope.mapPoints = " ";
+        $('#mapPoints').text($scope.mapPoints);
     };
 
     $scope.writeMessage = function (message) {
@@ -35,6 +33,19 @@ app.controller("drawerCtrl", function ($scope) {
         return {
             x: evt.clientX - rect.left,
             y: evt.clientY - rect.top
+        };
+    };
+
+    $scope.openImage = function(imgName){
+        $scope.clear();
+        $scope.canvas = document.getElementById('canvasDrawer');
+        $scope.context = $scope.canvas.getContext('2d');
+        $scope.background = new Image();
+        $scope.background.src = imgName;
+        $scope.background.onload = function () {
+            $scope.canvas.width = $scope.background.width;
+            $scope.canvas.height = $scope.background.height;
+            $scope.context.drawImage($scope.background, 0, 0);
         };
     };
 });

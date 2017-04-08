@@ -13,11 +13,15 @@
     </head>
     <body ng-app="canvasDrawer">
         <div class="container-fluid" ng-controller="drawerCtrl">
-            <canvas id="canvasDrawer" width="640" height="420"></canvas>
             <form>
-                <input class="form-control" type="text" ng-model="mapPoints" >
-                <button class="btn btn-default" ng-click="clear">Clear</button>
+                <div class="form-group">
+                    <input type="text" name="imageName" ng-model="imageName">
+                    <button class="btn btn-primary" ng-click="openImage(imageName)">Reload image</button>
+                </div>
+                <div id="mapPoints"></div>
+                <button class="btn btn-default" ng-click="clear()">Clear</button>
             </form>
+            <canvas id="canvasDrawer"></canvas>
         </div>
     </body>
 </html>
